@@ -1,0 +1,15 @@
+D:\Gits\university_coding\ConsoleApp1_1\bin\Debug\net8.0\ConsoleApp1_1.exe
+D:\Gits\university_coding\ConsoleApp1_1\bin\Debug\net8.0\ConsoleApp1_1.deps.json
+D:\Gits\university_coding\ConsoleApp1_1\bin\Debug\net8.0\ConsoleApp1_1.runtimeconfig.json
+D:\Gits\university_coding\ConsoleApp1_1\bin\Debug\net8.0\ConsoleApp1_1.dll
+D:\Gits\university_coding\ConsoleApp1_1\bin\Debug\net8.0\ConsoleApp1_1.pdb
+D:\Gits\university_coding\ConsoleApp1_1\obj\Debug\net8.0\ConsoleApp1_1.GeneratedMSBuildEditorConfig.editorconfig
+D:\Gits\university_coding\ConsoleApp1_1\obj\Debug\net8.0\ConsoleApp1_1.AssemblyInfoInputs.cache
+D:\Gits\university_coding\ConsoleApp1_1\obj\Debug\net8.0\ConsoleApp1_1.AssemblyInfo.cs
+D:\Gits\university_coding\ConsoleApp1_1\obj\Debug\net8.0\ConsoleApp1_1.csproj.CoreCompileInputs.cache
+D:\Gits\university_coding\ConsoleApp1_1\obj\Debug\net8.0\ConsoleApp1_1.sourcelink.json
+D:\Gits\university_coding\ConsoleApp1_1\obj\Debug\net8.0\ConsoleApp1_1.dll
+D:\Gits\university_coding\ConsoleApp1_1\obj\Debug\net8.0\refint\ConsoleApp1_1.dll
+D:\Gits\university_coding\ConsoleApp1_1\obj\Debug\net8.0\ConsoleApp1_1.pdb
+D:\Gits\university_coding\ConsoleApp1_1\obj\Debug\net8.0\ConsoleApp1_1.genruntimeconfig.cache
+D:\Gits\university_coding\ConsoleApp1_1\obj\Debug\net8.0\ref\ConsoleApp1_1.dll
