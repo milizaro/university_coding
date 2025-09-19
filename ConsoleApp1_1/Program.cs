@@ -52,10 +52,12 @@ namespace ConsoleApp1
 
             }
 
-            private int GetNumber(bool isNegative, char c)
+            private int getNumber(bool isNegative, char c)
             {
-                return isNegative ? -1 * int.Parse(c.ToString()) : int.Parse(c.ToString());
+                int num = int.Parse(c.ToString());
+                return isNegative ? -num  : num;
             }
+
             public string Sum()
             {
                 string sum = "";
@@ -63,21 +65,16 @@ namespace ConsoleApp1
 
                 int i = numStr1.Length - 1;
                 int j = numStr2.Length - 1;
+                
 
                 while (i >= 0)
                 {
-                    sumNum += GetNumber(isFirstNumNegative, numStr1[i]) +
-                              GetNumber(isSecondNumNegative, numStr2[j]);
+                    sumNum += getNumber(isFirstNumNegative, numStr1[i]) +
+                              getNumber(isSecondNumNegative, numStr2[j]);
                     if (sumNum > 9)
                     {
                         sum += (sumNum % 10).ToString();
                         sumNum /= 10;
-                    }
-                    else if (sumNum < 0)
-                    {
-                        sum += (-1 * sumNum).ToString();
-                        sumNum = 0;
-
                     }
                     else
                     {
@@ -103,8 +100,8 @@ namespace ConsoleApp1
                 {
                     while (i >= 0)
                     {
-                        diffNum += GetNumber(isFirstNumNegative, numStr1[i]) -
-                              GetNumber(isSecondNumNegative, numStr2[j]);
+                        diffNum += getNumber(isFirstNumNegative, numStr1[i]) -
+                              getNumber(isSecondNumNegative, numStr2[j]);
                         if (diffNum < 0)
                         {
                             diff += (diffNum + 10).ToString();
@@ -123,8 +120,8 @@ namespace ConsoleApp1
                 {
                     while (i >= 0)
                     {
-                        diffNum += GetNumber(isSecondNumNegative, numStr2[j]) -
-                              GetNumber(isFirstNumNegative, numStr1[i]);
+                        diffNum += getNumber(isSecondNumNegative, numStr2[j]) -
+                              getNumber(isFirstNumNegative, numStr1[i]);
                         if (diffNum < 0)
                         {
                             diff += (diffNum + 10).ToString();
