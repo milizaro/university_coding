@@ -2,7 +2,7 @@ package Enums
 
 import classes.Subject
 
-val SUBJECT_LIST: List[Subject] = List(
+var SUBJECT_LIST: List[Subject] = List(
   new Subject("Math"),
   new Subject("Chemistry"),
   new Subject("Physics"),

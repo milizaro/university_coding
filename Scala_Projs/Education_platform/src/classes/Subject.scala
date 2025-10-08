@@ -1,15 +1,16 @@
 package classes
 
-class Subject(title: String) {
+class Subject(title: String = "Empty") {
   val Title: String = title
   var studentList: List[Student] = List()
-
+  
   private def showStudents():String ={
     var stdStr = ""
     studentList.foreach(s => stdStr += s"""-${s.Name} - ${s.Group}\n""".stripMargin)
 
     stdStr
   }
+
   def Show():String = {
     var str =
       s"""
@@ -20,7 +21,8 @@ class Subject(title: String) {
 
     str
   }
-  def AddStudent(std:Student): Unit ={
-    studentList = studentList :+ std
+  def AddStudent(student:Student): Unit ={
+    studentList = studentList :+ student
   }
+
 }
