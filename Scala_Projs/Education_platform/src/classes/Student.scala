@@ -5,11 +5,14 @@ import scala.util.Random
 
 val RND = new Random()
 
-class Student(age:Int, name:String, address:String, group:String) extends Human(age, name, address){
+class Student(age:Int, name:String, address:String, group:String, token: Token) extends Human(age, name, address){
 
+  private var subList:List[Subject]  = List()
   override val Name: String = name
   val Group:String = group
-  private var subList:List[Subject]  = List()
+  var Scholarship:Double = 0
+  var Estimation:Int = 0
+  var Token = token
 
   def Show():String = {
     val str:String = s"""Student
@@ -17,6 +20,8 @@ class Student(age:Int, name:String, address:String, group:String) extends Human(
                         |Age: ${age}
                         |Address: ${address}
                         |Group: ${group}
+                        |Scholarship: ${Scholarship}
+                        |Estimation: ${Estimation}
                         |List of subjects: ${showSubList()}\n""".stripMargin
 
     str
@@ -30,7 +35,6 @@ class Student(age:Int, name:String, address:String, group:String) extends Human(
     str = str.substring(0, str.length-2)
     str
   }
-
 
   private def generateSubList(): Unit = {
     var rndSubCount = RND.nextInt(SUBJECT_LIST.length-1) + 1
@@ -50,5 +54,8 @@ class Student(age:Int, name:String, address:String, group:String) extends Human(
     subList = subList.distinct
   }
 
+  def PayForCourse(subj:Subject):Unit={
+    Token.Amount -= subj.Price
+  }
   generateSubList()
 }
