@@ -8,12 +8,12 @@ val RND = new Random()
 class Student(age:Int, name:String, address:String, group:String, token: Token) extends Human(age, name, address){
 
   private var subList:List[Subject]  = List()
-  override val Name: String = name
   val Group:String = group
   var Scholarship:Double = 0
   var Estimation:Int = 0
   var Token = token
 
+  def GetName(): String = name
   def Show():String = {
     val str:String = s"""Student
                         |Name: ${name}
@@ -54,8 +54,20 @@ class Student(age:Int, name:String, address:String, group:String, token: Token) 
     subList = subList.distinct
   }
 
-  def PayForCourse(subj:Subject):Unit={
-    Token.Amount -= subj.Price
+  def GetScholarship(tokenAmount:Double): Unit = {
+    Token.Amount += tokenAmount
+  }
+
+
+  def PayForCourse(subj:Subject):Double={
+    var needExtraTokenAmount = 0.0
+    if(Token.Amount >= subj.Price)
+      Token.Amount -= subj.Price
+    else{
+      needExtraTokenAmount = subj.Price - Token.Amount
+    }
+
+    needExtraTokenAmount
   }
   generateSubList()
 }
