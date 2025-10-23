@@ -12,9 +12,10 @@ class Subject(title: String = "Empty") {
     isActive
   }
 
-  def IsTimeToActivate(month:Int):Unit = {
-    isActive = if(startMonth >= month && month <= endMonth)  true else false
-  }
+  def GetStartMonth():Int = startMonth
+  def GetEndMonth():Int = endMonth
+  def Activate():Unit = isActive = true
+  def Deactivate():Unit = isActive = false
 
   private def setSubjectDuration():Unit ={
     val num1 = RND.nextInt(3)+1 // 1-4

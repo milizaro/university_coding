@@ -16,15 +16,29 @@ private var token = new Token(5000, "Test")
     }
     token.Amount -= scholarship
     scholarship
-  }  
-  
+  }
+  def IsTimeToActivateSubject(subject: Subject, month:Int):Unit = {
+    if(subject.GetStartMonth() >= month && month <= subject.GetEndMonth()){
+      if(!subject.IsActive()){
+        subject.Activate()
+        subject.studentList.foreach(s => {
+          val needExtraTokenAmount = s.PayForCourse(subject)
+          if(needExtraTokenAmount > 0){
+            s.BuyTokens(needExtraTokenAmount)
+            s.PayForCourse(subject)
+          }
+        })
+      }
+    }else
+      subject.Deactivate()
+  }
   def TransferScholarship():Unit = {
     _teacherList.foreach(t => {
       if(t.Subject.IsActive()){
         t.Subject.EstimateStudents()
         t.Subject.studentList.foreach(s => {
           s.GetScholarship(CalculateScholarship(s.Estimation, t.Subject.Price))
-          })        
+          })
       }
     })
   }

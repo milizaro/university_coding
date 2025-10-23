@@ -58,7 +58,10 @@ class Student(age:Int, name:String, address:String, group:String, token: Token) 
     Token.Amount += tokenAmount
   }
 
-
+  def BuyTokens(amount:Double):Unit = {
+    Token.Amount += amount
+    Exchange.Token.Amount -= amount
+  }
   def PayForCourse(subj:Subject):Double={
     var needExtraTokenAmount = 0.0
     if(Token.Amount >= subj.Price)
