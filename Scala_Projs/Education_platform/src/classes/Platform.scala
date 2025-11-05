@@ -14,10 +14,11 @@ private var token = new Token(5000, "Test")
       case 1 => scholarship = 0.7 * subjPrice
       case _ => scholarship = 0
     }
-    token.Amount -= scholarship
+    token.amount -= scholarship
     scholarship
   }
-  def IsTimeToActivateSubject(subject: Subject, month:Int):Unit = {
+
+  private def isTimeToActivateSubject(subject: Subject, month:Int):Unit = {
     if(subject.GetStartMonth() >= month && month <= subject.GetEndMonth()){
       if(!subject.IsActive()){
         subject.Activate()
@@ -31,9 +32,12 @@ private var token = new Token(5000, "Test")
       }
     }else
       subject.Deactivate()
+
   }
-  def TransferScholarship():Unit = {
+
+  def TransferScholarship(month:Int):Unit = {
     _teacherList.foreach(t => {
+      isTimeToActivateSubject(t.Subject, month)
       if(t.Subject.IsActive()){
         t.Subject.EstimateStudents()
         t.Subject.studentList.foreach(s => {

@@ -35,13 +35,16 @@ class Subject(title: String = "Empty") {
 
   private def showStudents():String ={
     var stdStr = ""
-    studentList.foreach(s => stdStr += s"""-${s.GetName()} - ${s.Group}\n ${s.Token.GetInfo()}""".stripMargin)
+    studentList.foreach(s => stdStr += s"""-${s.GetName()}-Estimation ${s.Estimation} - Scholarship ${s.Scholarship} - ${s.Group}\n ${s.GetTokenInfo()}\n""".stripMargin)
 
     stdStr
   }
 
   def Show():String = s"""
                          |${title}
+                         |StartMonth: ${startMonth}
+                         |EndMonth: ${endMonth}
+                         |Price: ${Price}
                          |Students:
                          |${showStudents()}""".stripMargin
 

@@ -11,8 +11,8 @@ class Student(age:Int, name:String, address:String, group:String, token: Token) 
   val Group:String = group
   var Scholarship:Double = 0
   var Estimation:Int = 0
-  var Token = token
 
+  def GetTokenInfo() = {token.GetInfo()}
   def GetName(): String = name
   def Show():String = {
     val str:String = s"""Student
@@ -55,19 +55,21 @@ class Student(age:Int, name:String, address:String, group:String, token: Token) 
   }
 
   def GetScholarship(tokenAmount:Double): Unit = {
-    Token.Amount += tokenAmount
+    token.amount += tokenAmount
+    Scholarship = tokenAmount
   }
 
   def BuyTokens(amount:Double):Unit = {
-    Token.Amount += amount
-    Exchange.Token.Amount -= amount
+    token.amount += amount
+    Exchange.Token.amount -= amount
   }
+
   def PayForCourse(subj:Subject):Double={
     var needExtraTokenAmount = 0.0
-    if(Token.Amount >= subj.Price)
-      Token.Amount -= subj.Price
+    if(token.amount >= subj.Price)
+      token.amount -= subj.Price
     else{
-      needExtraTokenAmount = subj.Price - Token.Amount
+      needExtraTokenAmount = subj.Price - token.amount
     }
 
     needExtraTokenAmount
