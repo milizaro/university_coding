@@ -39,7 +39,6 @@ class Student(age:Int, name:String, address:String, group:String, token: Token) 
   private def generateSubList(): Unit = {
     var rndSubCount = RND.nextInt(SUBJECT_LIST.length-1) + 1
     var sub = SUBJECT_LIST(RND.nextInt(SUBJECT_LIST.length-1))
-    sub.AddStudent(this)
     subList = subList :+ sub
     rndSubCount -= 1
 
@@ -52,6 +51,7 @@ class Student(age:Int, name:String, address:String, group:String, token: Token) 
     }
 
     subList = subList.distinct
+    subList.foreach(s => s.AddStudent(this))
   }
 
   def GetScholarship(tokenAmount:Double): Unit = {
