@@ -1,16 +1,17 @@
 package classes
 
+import scala.collection.mutable.Map
 import Enums.SUBJECT_LIST
+
+import scala.collection.mutable
 import scala.util.Random
 
 val RND = new Random()
 
 class Student(age:Int, name:String, address:String, group:String, token: Token) extends Human(age, name, address){
-
-  private var subList:List[Subject]  = List()
+  var EstimationMap:mutable.Map[Subject, Int]= mutable.Map()
+  var Scholarship: Double = 0
   val Group:String = group
-  var Scholarship:Double = 0
-  var Estimation:Int = 0
 
   def GetTokenInfo() = {token.GetInfo()}
   def GetName(): String = name
@@ -20,23 +21,23 @@ class Student(age:Int, name:String, address:String, group:String, token: Token) 
                         |Age: ${age}
                         |Address: ${address}
                         |Group: ${group}
-                        |Scholarship: ${Scholarship}
-                        |Estimation: ${Estimation}
                         |List of subjects: ${showSubList()}\n""".stripMargin
 
     str
   }
 
-  def AddSubj(subj:Subject): Unit = subList = subList :+ subj
-
   private def showSubList():String = {
     var str = ""
-    subList.foreach(e => str += e.Title + ", ")
-    str = str.substring(0, str.length-2)
+    EstimationMap.foreach(subEst => {
+     str += s"${subEst._1.Title} - ${subEst._2}\n"
+    })
     str
   }
 
   private def generateSubList(): Unit = {
+
+    var subList:List[Subject]  = List()
+
     var rndSubCount = RND.nextInt(SUBJECT_LIST.length-1) + 1
     var sub = SUBJECT_LIST(RND.nextInt(SUBJECT_LIST.length-1))
     subList = subList :+ sub
@@ -51,7 +52,11 @@ class Student(age:Int, name:String, address:String, group:String, token: Token) 
     }
 
     subList = subList.distinct
-    subList.foreach(s => s.AddStudent(this))
+
+    subList.foreach(s => {
+      s.AddStudent(this)
+      EstimationMap +=(s, 0)
+    })
   }
 
   def GetScholarship(tokenAmount:Double): Unit = {

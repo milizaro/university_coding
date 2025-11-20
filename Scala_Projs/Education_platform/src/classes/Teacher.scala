@@ -1,6 +1,5 @@
 package classes
 
-import Enums.SUBJECT_LIST
 import scala.util.Random
 
 val RND_t = new Random()

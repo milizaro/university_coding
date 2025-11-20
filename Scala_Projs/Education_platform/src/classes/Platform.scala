@@ -3,8 +3,7 @@ import scala.collection.mutable.Queue
 import Enums.STUDENT_LIST
 
 class Platform(teacherList: List[Teacher], transactionThread: TransactionThread) {
-private val _teacherList = teacherList 
-  
+  private val _teacherList = teacherList 
   private def isTimeToActivateSubject(subject: Subject, month:Int):Unit = {
     if(subject.GetStartMonth() >= month && month <= subject.GetEndMonth()){
       if(!subject.IsActive()){
@@ -28,11 +27,12 @@ private val _teacherList = teacherList
       if(t.Subject.IsActive()){
         t.Subject.EstimateStudents()
         t.Subject.studentList.foreach(s => {
-          transactionThread.addStudent(s)
+          //transactionThread.addStudent(s)
           })        
       }
+      //println(t.Show())
     })
-    transactionThread.run()   
+    //transactionThread.run()   
 
   }
 }

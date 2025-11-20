@@ -35,7 +35,7 @@ class Subject(title: String = "Empty") {
 
   private def showStudents():String ={
     var stdStr = ""
-    studentList.foreach(s => stdStr += s"""-${s.GetName()}-Estimation ${s.Estimation} - Scholarship ${s.Scholarship} - ${s.Group}\n ${s.GetTokenInfo()}\n""".stripMargin)
+    studentList.foreach(s => stdStr += s"""-${s.GetName()}-Estimation ${s.EstimationMap(this)} - Scholarship ${s.Scholarship} - ${s.Group}\n ${s.GetTokenInfo()}\n""".stripMargin)
 
     stdStr
   }
@@ -53,7 +53,7 @@ class Subject(title: String = "Empty") {
   }
 
   def EstimateStudents():Unit={
-    studentList.foreach(s => s.Estimation = RND.nextInt(4) + 1)
+    studentList.foreach(s => s.EstimationMap(this) = RND.nextInt(4) + 1)
   }
 
   setSubjectDuration()

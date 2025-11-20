@@ -2,6 +2,7 @@ package classes
 import scala.collection.mutable.Queue
 class TransactionThread extends Thread{
   private val buffer: Queue[Student] = Queue()
+
   private val lock = new Object
   private var token = new Token(5000, "Test")
 
