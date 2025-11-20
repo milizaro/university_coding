@@ -19,8 +19,10 @@ class Student(age:Int, name:String, address:String, group:String, token: Token) 
     val str:String = s"""Student
                         |Name: ${name}
                         |Age: ${age}
+                        |Scholarship: ${Scholarship}
                         |Address: ${address}
                         |Group: ${group}
+                        |Token: ${token.GetInfo()}
                         |List of subjects: ${showSubList()}\n""".stripMargin
 
     str
@@ -60,8 +62,10 @@ class Student(age:Int, name:String, address:String, group:String, token: Token) 
   }
 
   def GetScholarship(tokenAmount:Double): Unit = {
+    print(s"${name} === ${Scholarship} === ${token.amount}:::::::")
     token.amount += tokenAmount
     Scholarship = tokenAmount
+    println(s"AFTER_____${name} === ${Scholarship} === ${token.amount}")
   }
 
   def BuyTokens(amount:Double):Unit = {

@@ -10,7 +10,10 @@ class TransactionThread extends Thread{
     println("Buffer process starts")
     while (buffer.size > 0) {
       val s = buffer.dequeue()
-      println(s.Show())
+      s.EstimationMap.foreach(subjMap => {
+        print(s"BEFORE______${subjMap._1.Title}_____")
+        s.GetScholarship(CalculateScholarship(subjMap._2, subjMap._1.Price))
+      })
     }
     println("Buffer process ends")
   }
