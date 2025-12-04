@@ -1,14 +1,12 @@
 package classes
 
-import scala.collection.mutable.Map
 import Enums.SUBJECT_LIST
-
 import scala.collection.mutable
 import scala.util.Random
 
 val RND = new Random()
 
-class Student(age:Int, name:String, address:String, group:String, token: Token) extends Human(age, name, address){
+class Student(age:Int, name:String, address:String, group:String, var token: Token) extends Human(age, name, address){
   var EstimationMap:mutable.Map[Subject, Int]= mutable.Map()
   var Scholarship: Double = 0
   val Group:String = group
@@ -69,15 +67,16 @@ class Student(age:Int, name:String, address:String, group:String, token: Token) 
   }
 
   def BuyTokens(amount:Double):Unit = {
-    token.amount += amount
-    Exchange.Token.amount -= amount
+    token += Exchange.BuyTokens(new Token(amount, "Test"))
+
   }
 
   def PayForCourse(subj:Subject):Double={
     var needExtraTokenAmount = 0.0
-    if(token.amount >= subj.Price)
+    if(token.amount >= subj.Price) {      
       token.amount -= subj.Price
-    else{
+      Exchange.PayForCourse(subj.Price)
+    } else{
       needExtraTokenAmount = subj.Price - token.amount
     }
 

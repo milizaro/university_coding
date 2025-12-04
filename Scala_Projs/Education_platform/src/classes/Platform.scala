@@ -1,6 +1,4 @@
 package classes
-import scala.collection.mutable.Queue
-import Enums.STUDENT_LIST
 
 class Platform(teacherList: List[Teacher], transactionThread: TransactionThread) {
   private val _teacherList = teacherList
