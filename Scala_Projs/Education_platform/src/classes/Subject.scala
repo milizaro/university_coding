@@ -3,7 +3,7 @@ package classes
 class Subject(title: String = "Empty") {
   val Title: String = title
   var studentList: List[Student] = List()
-  val Price:Double = RND.between(5, 20)
+  val Price:Token = new Token(RND.between(5, 20), "Test")
   private var startMonth:Int = 0
   private var endMonth:Int = 0
   private var isActive: Boolean = false

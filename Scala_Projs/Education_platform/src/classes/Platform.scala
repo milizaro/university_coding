@@ -8,7 +8,7 @@ class Platform(teacherList: List[Teacher], transactionThread: TransactionThread)
         subject.Activate()
         subject.studentList.foreach(s => {
           val needExtraTokenAmount = s.PayForCourse(subject)
-          if(needExtraTokenAmount > 0){
+          if(needExtraTokenAmount.GetAmount() > 0){
             s.BuyTokens(needExtraTokenAmount)
             s.PayForCourse(subject)
           }
@@ -25,7 +25,7 @@ class Platform(teacherList: List[Teacher], transactionThread: TransactionThread)
       if(t.Subject.IsActive()){
         t.Subject.EstimateStudents()
         t.Subject.studentList.foreach(s => {
-          transactionThread.addStudent(s)
+          transactionThread.addStudentAndSubject(s, t.Subject)
           })        
       }
     })

@@ -8,8 +8,8 @@ object Exchange {
     Token
   }
 
-  def PayForCourse(TokenAmount: Double): Unit = {
-    token += new Token(TokenAmount, "Test")
+  def PayForCourse(Token: Token): Unit = {
+    token += Token
   }
 
 }

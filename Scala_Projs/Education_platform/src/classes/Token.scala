@@ -23,4 +23,11 @@ class Token(var amount:Double, var title:String) {
     } else
       throw Exception("Input token isn`t valid")
   }
+  
+  def >=(token:Token):Boolean={
+    if(title.equals(token.title))
+      amount >= token.amount
+    else 
+      throw new Exception("Input Token isn`t valid")
+  }
 }

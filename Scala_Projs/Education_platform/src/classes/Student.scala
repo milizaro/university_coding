@@ -43,8 +43,6 @@ class Student(age:Int, name:String, address:String, group:String, var token: Tok
     subList = subList :+ sub
     rndSubCount -= 1
 
-
-
     for(i <- 1 to rndSubCount)
     {
       sub = SUBJECT_LIST(RND.nextInt(SUBJECT_LIST.length-1))
@@ -59,25 +57,25 @@ class Student(age:Int, name:String, address:String, group:String, var token: Tok
     })
   }
 
-  def GetScholarship(tokenAmount:Double): Unit = {
+  def GetScholarship(Token: Token): Unit = {
     print(s"${name} === ${Scholarship} === ${token.amount}:::::::")
-    token.amount += tokenAmount
-    Scholarship = tokenAmount
+    token += Token
+    Scholarship = Token.amount
     println(s"AFTER_____${name} === ${Scholarship} === ${token.amount}")
   }
 
-  def BuyTokens(amount:Double):Unit = {
-    token += Exchange.BuyTokens(new Token(amount, "Test"))
+  def BuyTokens(Token:Token):Unit = {
+    token += Exchange.BuyTokens(Token)
 
   }
 
-  def PayForCourse(subj:Subject):Double={
-    var needExtraTokenAmount = 0.0
-    if(token.amount >= subj.Price) {      
-      token.amount -= subj.Price
+  def PayForCourse(subj:Subject):Token={
+    var needExtraTokenAmount = new Token(0, "");
+    if(token >= subj.Price) {
+      token -= subj.Price
       Exchange.PayForCourse(subj.Price)
     } else{
-      needExtraTokenAmount = subj.Price - token.amount
+      needExtraTokenAmount = subj.Price - token
     }
 
     needExtraTokenAmount
